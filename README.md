@@ -1,4 +1,4 @@
-## Introduction, mod by Nick
+## Introduction, mod by Nick Buckmaster Sunday 10 Jan 2016
 
 This assignment uses data from
 the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
