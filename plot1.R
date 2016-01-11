@@ -21,13 +21,29 @@ data$Date <- as.Date(data$Date, format ="%d/%m/%Y")
 # subset the data so we are only looking at the two dates in question
 outdata<-data[data$Date>="2007-02-01" & data$Date<="2007-02-02",]
 
+
+# set the x axis and scale
+v1 <- c(0,1000,2000,3000) # -> defines position of tick marks.
+v2 <- c("0","2","4","6") # defines labels of tick marks.
+
+
 # print to the file device
 png(file="plot1.png",bg = "transparent")
-hist(as.numeric(outdata$Global_active_power))
+hist(as.numeric(outdata$Global_active_power),main = "Global active power",xaxt = "n", xlab="Global Active Power (kilowatts)")
+# add the x axis using the pre configured scale above
+axis(side = 1, 
+     at = v1, 
+     labels = v2,
+     tck=-.03)
 dev.off()
 
 
-# print the plot to the screen device
-hist(as.numeric(outdata$Global_active_power))
 
+# print the plot to the screen device with no x axis
+hist(as.numeric(outdata$Global_active_power),main = "Global active power",xaxt = "n", xlab="Global Active Power (kilowatts)")
+# add the x axis using the pre configured scale above
+axis(side = 1, 
+     at = v1, 
+     labels = v2,
+     tck=-.03)
 

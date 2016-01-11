@@ -41,14 +41,60 @@ dev.off()
 # print the plot to the scree device
 # set up the 2 by 2 grid canvas
 par(mfcol = c(2,2))
+
 # plot 1
-plot(as.numeric(outdata$Global_active_power), type="l", ylab="Global Active Power (kilowatts)")
+
+# set the x axis and scale
+v1 <- c(0,1500,2900) # -> defines position of tick marks.
+v2 <- c("Thu","Fri","Sat") # defines labels of tick marks.
+# set the y axis and scale
+h1 <- c(0,1000,2000, 3000) # -> defines position of tick marks.
+h2 <- c("0","2","4","6") # defines labels of tick marks.
+
+plot(as.numeric(outdata$Global_active_power),xaxt = "n", yaxt = "n", type="l", ylab="Global Active Power (kilowatts)")
+axis(side = 1, 
+     at = v1, 
+     labels = v2,
+     tck=-.03)
+axis(side = 2, 
+     at = h1, 
+     labels = h2,
+     tck=-.03)
+
 # plot 2
-plot(as.numeric(outdata$Sub_metering_1), type="l", ylab = "Energy Sub Metering")
+# set the x axis and scale
+plot(as.numeric(outdata$Sub_metering_1),xaxt = "n", type="l", ylab = "Energy Sub Metering")
 lines(as.numeric(outdata$Sub_metering_2), type="l", col="red")
 lines(as.numeric(outdata$Sub_metering_3), type="l", col = "blue")
 legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),lty=c(1,1,1), col = c("black","red","blue"))
+axis(side = 1, 
+     at = v1, 
+     labels = v2,
+     tck=-.03)
+
 #plot 3
-plot(as.numeric(outdata$Voltage), type="l", ylab="Voltage")
+# set the y axis and scale
+h1 <- c(900,1100,1300,1500,1700,1900,2100) # -> defines position of tick marks.
+h2 <- c("234","","238","","242","","246") # defines labels of tick marks.
+
+plot(as.numeric(outdata$Voltage),yaxt = "n",xaxt = "n", type="l", ylab="Voltage")
+axis(side = 1, 
+     at = v1, 
+     labels = v2,
+     tck=-.03)
+axis(side = 2, 
+     at = h1, 
+     labels = h2,
+     tck=-.03)
 # plot 4
-plot(as.numeric(outdata$Global_reactive_power), type="l", ylab="Global reactive power")
+h1 <- c(0,45,90,135,180,225) # -> defines position of tick marks.
+h2 <- c("0.0","0.1","0.2","0.3","0.4","0.5") # defines labels of tick marks.
+plot(as.numeric(outdata$Global_reactive_power),yaxt = "n",xaxt = "n", type="l", ylab="Global reactive power")
+axis(side = 1, 
+     at = v1, 
+     labels = v2,
+     tck=-.03)
+axis(side = 2, 
+     at = h1, 
+     labels = h2,
+     tck=-.03)
