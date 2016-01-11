@@ -20,11 +20,11 @@ rm(temp)
 data$Date <- as.Date(data$Date, format ="%d/%m/%Y")
 # subset the data so we are only looking at the two dates in question
 outdata<-data[data$Date>="2007-02-01" & data$Date<="2007-02-02",]
-# print the plot to the screen device
 
+# print to the file device
+png(filename = "plot2.png",bg = "transparent")
 plot(as.numeric(outdata$Global_active_power), type="l", ylab="Global Active Power (kilowatts)")
-
-# copy the plot to the file device
-dev.copy(png, "plot2.png")
-# close the file device
 dev.off()
+
+# print the plot to the screen device
+plot(as.numeric(outdata$Global_active_power), type="l", ylab="Global Active Power (kilowatts)")
